@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VMS</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./global.css" />
+    <script src="config.js"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+<div id="nav"></div>
+<div class="flex">
+    <div id="dash" class="h-full"></div>
+    <div class="w-full flex justify-center items-center">
+        <!--your content should goes here-->
+        
+        <form id="officerForm" class="bg-gray-800 p-8 shadow-md w-[800px] text-white" onsubmit="submitForm(event)">
+
+            <h2 class="text-2xl font-bold mb-6">Register Officer</h2>
+            <div class="flex flex-row w-full">
+                <div class="m-2 w-[50%]">
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium" for="officer_name">Officer Name</label>
+                        <input type="text" id="officer_name" name="officer_name" class="mt-1 block w-full h-[30px] bg-gray-700 border-none focus:border-blue-500 focus:ring-blue-500">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium" for="officer_grade">Officer Grade</label>
+                        <input type="text" id="officer_grade" name="officer_grade" class="mt-1 block w-full h-[30px]  bg-gray-700 border-none focus:border-blue-500 focus:ring-blue-500">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium" for="officer_nic">Officer NIC</label>
+                        <input type="text" id="officer_nic" name="officer_nic" class="mt-1 block w-full h-[30px]  bg-gray-700 border-none focus:border-blue-500 focus:ring-blue-500">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium" for="officer_username">Officer Username</label>
+                        <input type="text" id="officer_username" name="officer_username" class="mt-1 block w-full h-[30px] bg-gray-700 border-none focus:border-blue-500 focus:ring-blue-500">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium" for="officer_email">Officer Email</label>
+                        <input type="email" id="officer_email" name="officer_email" class="mt-1 block w-full h-[30px] bg-gray-700 border-none focus:border-blue-500 focus:ring-blue-500">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium" for="officer_password">Officer Password</label>
+                        <input type="password" id="officer_password" name="officer_password" class="mt-1 block w-full h-[30px] bg-gray-700 border-none focus:border-blue-500 focus:ring-blue-500">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium" for="officer_password_confirm">Confirm Password</label>
+                        <input type="password" id="officer_password_confirm" class="mt-1 block w-full h-[30px] bg-gray-700 border-none focus:border-blue-500 focus:ring-blue-500">
+                    </div>
+                    
+    
+                </div>
+                <div class="m-2 w-[50%]">
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium" for="officer_phone_number">Officer Phone Number</label>
+                        <input type="text" id="officer_phone_number" name="officer_phone_number" class="mt-1 block w-full h-[30px]  bg-gray-700 border-none focus:border-blue-500 focus:ring-blue-500">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium" for="officer_role">Officer Role</label>
+                        <input type="text" id="officer_role" name="officer_role" class="mt-1 block w-full h-[30px]  bg-gray-700 border-none focus:border-blue-500 focus:ring-blue-500">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium" for="officer_position">Officer Position</label>
+                        <input type="text" id="officer_position" name="officer_position" class="mt-1 block w-full h-[30px]  bg-gray-700 border-none focus:border-blue-500 focus:ring-blue-500">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium" for="officer_description">Officer Description</label>
+                        <textarea type="text" id="officer_description" name="officer_description" class="mt-1 block w-full bg-gray-700 border-none focus:border-blue-500 focus:ring-blue-500"></textarea>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium" for="officer_power_level">Officer Power Level</label>
+                        <input type="number" id="officer_power_level" name="officer_power_level" class="mt-1 block w-full h-[30px] bg-gray-700 border-none focus:border-blue-500 focus:ring-blue-500">
+                    </div>
+                    <div class="mb-3 flex items-center">
+                        <input type="checkbox" id="committee" name="committee" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-none bg-gray-700">
+                        <label class="ml-2 block text-sm font-medium" for="committee">Committee</label>
+                    </div>
+                    <input type="submit" value="Register" class="bg-slate-200 hover:bg-slate-400 text-[black] w-full p-1">
+    
+                </div>
+            </div>
+            
+        </form>
+
+    </div>
+
+</div>
+<div id="footer"></div>
+<script src="./global.js"></script>
+
+<script>
+   
+function submitForm(event) {
+    event.preventDefault(); // Prevent default form submission
+
+
+    // Gather form data
+    let formData = {
+        officer_name: document.getElementById('officer_name').value,
+        officer_grade: document.getElementById('officer_grade').value,
+        officer_nic: document.getElementById('officer_nic').value,
+        officer_username: document.getElementById('officer_username').value,
+        officer_email: document.getElementById('officer_email').value,
+        officer_password: document.getElementById('officer_password').value,
+        officer_phone_number: document.getElementById('officer_phone_number').value,
+        officer_role: document.getElementById('officer_role').value,
+        officer_position: document.getElementById('officer_position').value,
+        officer_description: document.getElementById('officer_description').value,
+        officer_power_level: document.getElementById('officer_power_level').value,
+        committee: document.getElementById('committee').checked
+    };
+
+    if(formData.officer_password != document.getElementById('officer_password_confirm').value){
+        showAlert("Passwords did not match!", "error");
+        return;
+    }
+
+    // Example: Use fetch API to send data to server
+    fetch(`${config.apiBaseUrl}${config.registerEndpoint.url}`, {
+        method: config.registerEndpoint.httpMethod,
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        // Success case
+        showAlert('User Saved Successfully');
+        console.log('Success:', data);
+    })
+    .catch(error => {
+        // Error case
+        showAlert('Error: ' + error.message);
+        console.error('Error:', error);
+    });
+}
+
+
+</script>
+</body>
+</html>
